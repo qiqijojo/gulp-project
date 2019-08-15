@@ -1,12 +1,8 @@
-const { series, parallel } = require('gulp'); 
+const { src, dest } = require('gulp');
 
-function cbA(cb) {
-    console.log('iiii')
-    cb();
+function streamTask() {
+    return src('*.json')
+    .pipe(dest('333'))
+    .pipe(dest('oooo'));
 }
-function cbB(cb) {
-    console.log('3333')
-    cb();
-}
-exports.build = parallel(cbA, cbB);
-exports.default = series(cbA, cbB);
+exports.default = streamTask;
