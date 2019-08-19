@@ -1,8 +1,10 @@
-const { src, dest } = require('gulp');
+const fs = require('fs');
 
-function streamTask() {
-    return src('*.json')
-    .pipe(dest('333'))
-    .pipe(dest('oooo'));
+async function asyncAwaitTask() {
+  const { version } = fs.readFileSync('package.json', 'utf-8');
+  console.log(fs.readFileSync('package.json', 'utf-8'));
+  console.log('ppp', version);
+  await Promise.resolve('some result');
 }
-exports.default = streamTask;
+
+exports.default = asyncAwaitTask;
