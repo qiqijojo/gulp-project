@@ -1,10 +1,8 @@
-const fs = require('fs');
+const { src, dest } = require('gulp');
+const babel = require('gulp-babel');
 
-async function asyncAwaitTask() {
-  const { version } = fs.readFileSync('package.json', 'utf-8');
-  console.log(fs.readFileSync('package.json', 'utf-8'));
-  console.log('ppp', version);
-  await Promise.resolve('some result');
+exports.default = function() {
+  return src('*.js')
+    .pipe(babel())
+    .pipe(dest('output/'));
 }
-
-exports.default = asyncAwaitTask;
