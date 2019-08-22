@@ -11,8 +11,8 @@ function c(cb) {
     cb()
 }
 function createDist(){ // 生成dist文件（src、dest/symlink使用）
-    return src('src/*.js')
-    .pipe(symlink('dist/'));
+    return src('src/*.js', {base:'./'})
+    .pipe(dest('dist/'));
 }
 const tasks = [createDist, parallel([a, b, c])];
 function watching() {
